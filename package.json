@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "webpack-dev-server --mode development --config webpack.config.dev.babel.js --open",
+    "build": "webpack --config webpack.config.prod.babel.js"
   },
   "author": "Alexander Malinov",
   "license": "ISC",
