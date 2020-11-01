@@ -1,0 +1,26 @@
+body {
+  background-color: slategray;
+}
+
+/* Styles for login and registration forms */
+
+.user-form {
+  border-radius: 10px;
+  margin-top: 15%;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 3% 3% 3% 3%;
+  background-color: floralwhite;
+}
+
+.user-form_form-header {
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.user-form_submit-button {
+  margin-top: 3%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
