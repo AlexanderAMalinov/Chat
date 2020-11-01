@@ -1,15 +1,14 @@
 import '@babel/polyfill';
-
 import webpack from 'webpack';
-
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = {
+export default {
   devtool: false,
   entry: {
     main: [
       '@babel/polyfill',
-      './src/index.jsx',
+      './src/App.jsx',
+      './src/index.css',
     ],
   },
   output: {
@@ -19,6 +18,9 @@ module.exports = {
     historyApiFallback: true,
     port: 8080,
     hot: true,
+  },
+  resolve: {
+    extensions: ['.js', '.ts', '.jsx'],
   },
   module: {
     rules: [
@@ -33,6 +35,18 @@ module.exports = {
             plugins: ['react-hot-loader/babel'],
           },
         }],
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: { sourceMap: true },
+          },
+        ],
       },
     ],
   },

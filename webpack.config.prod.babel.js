@@ -1,23 +1,27 @@
 import '@babel/polyfill';
-
 import path from 'path';
-
 import webpack from 'webpack';
-
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
+import ImageMinPlugin from 'imagemin-webpack-plugin';
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
 module.exports = {
   devtool: false,
   entry: {
     main: [
       '@babel/polyfill',
-      './src/index.jsx',
+      './src/App.jsx',
+      './src/index.css',
     ],
   },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
+  },
+  resolve: {
+    extensions: ['.js', '.ts', '.jsx'],
   },
   module: {
     rules: [
@@ -31,6 +35,19 @@ module.exports = {
           },
         }],
       },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { sourceMap: true },
+          },
+          {
+            loader: 'css-loader',
+            options: { sourceMap: true },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -38,7 +55,10 @@ module.exports = {
       filename: '[name].js.map',
       exclude: ['bundle.js'],
     }),
-    // new CleanWebpackPlugin(['dist']),
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css',
+    }),
     new HtmlWebpackPlugin({
       filename: './index.html',
       template: './src/index.html',
@@ -47,6 +67,12 @@ module.exports = {
   optimization: {
     minimizer: [
       new UglifyJSPlugin({ sourceMap: true }),
+      new ImageMinPlugin({
+        test: /\.(png|jpe?g|gif|svg)$/,
+      }),
+      new OptimizeCssAssetsPlugin({
+        cssProcessorOptions: { sourceMap: true },
+      }),
     ],
   },
 };
