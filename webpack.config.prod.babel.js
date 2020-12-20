@@ -2,7 +2,6 @@ import '@babel/polyfill';
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import ImageMinPlugin from 'imagemin-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
@@ -12,8 +11,8 @@ module.exports = {
   entry: {
     main: [
       '@babel/polyfill',
-      './src/App.jsx',
-      './src/index.css',
+      './client/App.jsx',
+      './client/index.css',
     ],
   },
   output: {
@@ -39,8 +38,7 @@ module.exports = {
         test: /\.(sa|sc|c)ss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: { sourceMap: true },
+            loader: 'style-loader',
           },
           {
             loader: 'css-loader',
@@ -55,13 +53,9 @@ module.exports = {
       filename: '[name].js.map',
       exclude: ['bundle.js'],
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[hash].css',
-      chunkFilename: '[id].[hash].css',
-    }),
     new HtmlWebpackPlugin({
       filename: './index.html',
-      template: './src/index.html',
+      template: './client/index.html',
     }),
   ],
   optimization: {

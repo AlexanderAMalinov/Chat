@@ -7,8 +7,8 @@ export default {
   entry: {
     main: [
       '@babel/polyfill',
-      './src/App.jsx',
-      './src/index.css',
+      './client/App.jsx',
+      './client/index.css',
     ],
   },
   output: {
@@ -63,7 +63,7 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: './index.html',
-      template: './src/index.html',
+      template: './client/index.html',
     }),
   ],
 };

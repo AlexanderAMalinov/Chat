@@ -8,7 +8,7 @@ export class Chat extends React.Component {
     this.state = { isRegistration: false };
   }
 
-  renderTransition() {
+  renderTransitionLabel() {
     const { isRegistration } = this.state;
 
     const labels = isRegistration
@@ -33,7 +33,7 @@ export class Chat extends React.Component {
     return (
       <>
         {isRegistration ? <UserRegistrationForm /> : <LoginForm />}
-        {this.renderTransition()}
+        {this.renderTransitionLabel()}
       </>
     );
   }
