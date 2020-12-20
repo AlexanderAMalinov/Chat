@@ -1,13 +1,24 @@
 import Express from 'express';
+import routes from './routes.js';
 
-const pagePath = '../dist/index.html';
+const startPagePath = '../dist/index.html';
 const port = 80;
 
 const app = new Express();
 app.use(Express.static('../dist'));
 
-app.get('/', (req, res) => {
-    res.sendFile(pagePath);
+// Return start page HTML
+app.get(routes.ROOT, (req, res) => {
+    res.sendFile(startPagePath);
+});
+
+// Make new user
+app.post(routes.CREATE_USER, (req, res) => {
+
+});
+
+app.get(routes.CONVERSATIONS, (req, res) => {
+
 });
 
 app.listen(port, () => {
