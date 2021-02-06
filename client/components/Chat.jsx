@@ -16,7 +16,7 @@ export class Chat extends React.Component {
       : { usualText: 'Нет аккаунта? ', linkText: 'Создай его!' };
 
     return (
-      <div className="create-account">
+      <div className="login-registration-transition-label">
         <p>{labels.usualText}<a href="" onClick={this.changeForm} className="transition">{labels.linkText}</a></p>
       </div>
     );
