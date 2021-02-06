@@ -1,5 +1,5 @@
 import Express from 'express';
-import routes from './routes.js';
+import { routes } from './routes.js';
 
 const port = 80;
 
@@ -16,11 +16,12 @@ app.post(routes.CREATE_USER, (req, res) => {
   
 });
 
+// Make login
 app.get(routes.LOGIN, (req, res) => {
   
 });
 
-// Get users conversations
+// Get user conversations
 app.get(routes.CONVERSATIONS, (req, res) => {
 
 });
