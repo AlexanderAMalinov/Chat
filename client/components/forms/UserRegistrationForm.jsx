@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserRegistrationForm = (props) => {
+export const UserRegistrationForm = (props) => {
   return (
     <form className="user-form">
       <h3 className="user-form__form-header">Регистрация</h3>
@@ -20,5 +20,3 @@ const UserRegistrationForm = (props) => {
     </form>
   );
 };
-
-export default UserRegistrationForm;

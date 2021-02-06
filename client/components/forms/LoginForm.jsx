@@ -12,7 +12,7 @@ export class LoginForm extends React.Component {
   render() {
     return (
       <form className="user-form">
-        <h3 className="user-form_form-header">Вход</h3>
+        <h3 className="user-form__form-header">Вход</h3>
         <div className="form-group">
           <label htmlFor="Login">Логин</label>
           <input onChange={this.onTextType} type="text" className="form-control" id="Login" placeholder="Введите логин" />

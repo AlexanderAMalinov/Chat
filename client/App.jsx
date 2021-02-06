@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import reducers from './reducers/index';
 import { createStore } from 'redux';
-import { Chat } from './components/Chat';
+import { Chat } from './Chat';
 
 const store = createStore(
   reducers,

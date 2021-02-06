@@ -1,6 +1,6 @@
 import React from 'react';
-import { LoginForm } from './forms/LoginForm';
-import UserRegistrationForm from './forms/UserRegistrationForm';
+import { LoginForm } from './components/forms/LoginForm';
+import { UserRegistrationForm } from './components/forms/UserRegistrationForm';
 
 export class Chat extends React.Component {
   constructor(props) {
