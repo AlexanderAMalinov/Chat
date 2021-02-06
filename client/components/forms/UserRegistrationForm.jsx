@@ -1,8 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { registration } from '../../actions/index.js';
 
-export const UserRegistrationForm = (props) => {
+const actionCreators = { registration };
+
+const UserRegistrationForm = (props) => {
+  const onSubmit = (event) => {
+    const { registration } = props;
+    event.preventDefault();
+    registration({ formData: 'boom!' });
+  };
+
   return (
-    <form className="user-form">
+    <form onSubmit={onSubmit} className="user-form">
       <h3 className="user-form__form-header">Регистрация</h3>
       <div className="form-group">
         <label htmlFor="Login">Логин</label>
@@ -20,3 +30,5 @@ export const UserRegistrationForm = (props) => {
     </form>
   );
 };
+
+export default connect(null, actionCreators)(UserRegistrationForm);

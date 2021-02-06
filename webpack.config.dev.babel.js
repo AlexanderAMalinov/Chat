@@ -7,7 +7,7 @@ export default {
   entry: {
     main: [
       '@babel/polyfill',
-      './client/App.jsx',
+      './client/index.jsx',
       './client/index.css',
     ],
   },

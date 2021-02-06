@@ -5,9 +5,9 @@ export class LoginForm extends React.Component {
     super(props);
   }
 
-  onTextType(e) {
+  // onTextType(e) {
     
-  }
+  // }
 
   render() {
     return (
@@ -21,7 +21,7 @@ export class LoginForm extends React.Component {
           <label htmlFor="password">Пароль</label>
           <input type="password" className="form-control" id="password" placeholder="Введите пароль" />
         </div>
-        <button type="submit" className="btn btn-primary user-form_submit-button">Войти</button>
+        <button type="submit" className="btn btn-primary user-form__submit-button">Войти</button>
       </form>
     );
   }
