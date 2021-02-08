@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registration } from '../../actions/index.js';
+import { registration, userCreate } from '../../actions/index.js';
 import { Formik, Field, Form } from 'formik';
 import ValidationService from '../../services/ValidationService';
 
-const actionCreators = { registration };
+const actionCreators = { userCreate, registration };
 
 const UserRegistrationForm = (props) => {
-
   return (
     <Formik
       initialValues={{
@@ -15,7 +14,7 @@ const UserRegistrationForm = (props) => {
         password: '',
         passwordConfirmation: ''
       }}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => props.userCreate(values)}
     >
       {({ errors, touched }) => (
         <Form className="user-form">

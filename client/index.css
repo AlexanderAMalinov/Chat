@@ -25,6 +25,7 @@ body {
 }
 
 .user-form__form-header {
+  font-weight: 350;
   text-align: center;
   margin-bottom: 3%;
 }
