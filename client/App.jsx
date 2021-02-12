@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { LoginForm } from './components/forms/LoginForm';
-import UserRegistrationForm from './components/forms/UserRegistrationForm';
 import * as actions from './actions/index.js';
+import { LoginForm } from './components/forms/LoginForm';
+import { TransitionLabel } from './components/forms/TransitionLabel';
+import UserRegistrationForm from './components/forms/UserRegistrationForm';
 
 const actionCreators = {
   registration: actions.registration,
@@ -16,20 +17,6 @@ class App extends React.Component {
     this.state = { isRegistration: false };
   }
 
-  renderTransitionLabel() {
-    const { isRegistration } = this.state;
-
-    const labels = isRegistration
-      ? { usualText: 'Вернуться ко ', linkText: 'входу в аккаунт?' }
-      : { usualText: 'Нет аккаунта? ', linkText: 'Создай его!' };
-
-    return (
-      <div className="login-registration-transition-label">
-        <p>{labels.usualText}<a href="" onClick={this.changeForm} className="transition">{labels.linkText}</a></p>
-      </div>
-    );
-  }
-
   changeForm = (event) => {
     event.preventDefault();
     this.setState({ isRegistration: !this.state.isRegistration });
@@ -37,11 +24,10 @@ class App extends React.Component {
 
   render() {
     const { isRegistration } = this.state;
-
     return (
       <>
         {isRegistration ? <UserRegistrationForm /> : <LoginForm />}
-        {this.renderTransitionLabel()}
+        <TransitionLabel onChangeForm={this.changeForm} isRegistrationMode={isRegistration} />
       </>
     );
   }
