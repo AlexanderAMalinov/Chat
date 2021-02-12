@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registration, userCreate } from '../../actions/index.js';
 import { Formik, Field, Form } from 'formik';
-import ValidationService from '../../services/ValidationService';
+import { registration, userCreate } from '../../actions/index.js';
+import { ValidationService } from '../../services/ValidationService';
 
 const actionCreators = { userCreate, registration };
 

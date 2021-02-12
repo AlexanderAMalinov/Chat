@@ -1,14 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
+import { userLogin } from '../../actions/index';
 
-export const LoginForm = () => {
+const actionCreators = { userLogin };
+
+const LoginForm = (props) => {
   return (
     <Formik
       initialValues={{
         login: '',
         password: ''
       }}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => props.userLogin(values)}
     >
       <Form className="user-form">
         <h3 className="user-form__form-header">Вход</h3>
@@ -25,3 +29,5 @@ export const LoginForm = () => {
     </Formik>
   );
 };
+
+export default connect(null, actionCreators)(LoginForm);
