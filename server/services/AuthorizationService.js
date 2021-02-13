@@ -12,8 +12,7 @@ export class AuthorizationService {
     }
 
     async findUserData(formData) {
-		let result;
-		const { login, password } = formData;
+		const { login } = formData;
 		const data = await fs.readFile(this.dbPath);
 		const usersArray = data.toString().trim().split('\n');
 		const usersParsed = usersArray.map(user => {
@@ -22,13 +21,10 @@ export class AuthorizationService {
 		});
 
 		const expectedUser = usersParsed.find(user => user.login === login);
-		if (expectedUser) {
-			const isCorrectPassword = expectedUser.password === password;
-			result = { userExist: true, isCorrectPassword };
-		} else {
-			result = { userExist: false };
-		}
+		return expectedUser || null;
+	}
 
-		return result;
+	async getRelatedConversations(id) {
+		
 	}
 }

@@ -1,11 +1,11 @@
 export class ValidationService {
-  	static validateEmail(value) {
+	static validateEmail(value) {
 		let error;
 		const isValid = !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value);
 		if (!isValid) {
 			error = 'Invalid email address';
 		}
-    	return error;
+		return error;
   	}
 
 	static validatePassword(value) {
@@ -17,5 +17,3 @@ export class ValidationService {
 		return error;
 	}
 }
-
- 
