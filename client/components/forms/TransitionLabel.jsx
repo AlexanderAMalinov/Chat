@@ -9,8 +9,8 @@ export const TransitionLabel = (props) => {
 	const isRegistration = props.isRegistrationMode;
 	const relatedText = isRegistration ? labels.toLogin : labels.toRegistration;
 	return (
-			<div className="login-registration-transition-label">
-				<p>{relatedText.text}<a href="" onClick={props.onChangeForm} className="transition">{relatedText.linkText}</a></p>
-			</div>
+		<div className="login-registration-transition-label">
+			<p>{relatedText.text}<a href="" onClick={props.onChangeForm} className="transition">{relatedText.linkText}</a></p>
+		</div>
 	);
 };

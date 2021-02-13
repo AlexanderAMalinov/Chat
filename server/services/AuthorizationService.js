@@ -1,11 +1,17 @@
 import fs from 'fs/promises';
 
-export class LoginService {
-	constructor(dbPath) {
-		this.dbPath = dbPath;
-	}
+export class AuthorizationService {
+    constructor(dbPath) {
+        this.dbPath = dbPath;
+    }
 
-	async findUserData(formData) {
+    async createNewUser(formData) {
+        const { login, password } = formData;
+        const preparedData = `${login}|${password}\n`;
+        await fs.appendFile(this.dbPath, preparedData, 'utf8');
+    }
+
+    async findUserData(formData) {
 		let result;
 		const { login, password } = formData;
 		const data = await fs.readFile(this.dbPath);

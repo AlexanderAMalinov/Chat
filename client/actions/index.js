@@ -6,19 +6,19 @@ export const login = createAction('LOGIN');
 export const registration = createAction('REGISTRATION');
 
 export const userCreate = (formData) => async (dispatch) => {
-  try {
-    const userInfo = await axios.post(routes.CREATE_USER, formData);
+	try {
+		const userInfo = await axios.post(routes.CREATE_USER, formData);
 		dispatch(registration({ payload: userInfo }));
-  } catch (e) {
-    console.log(e);
-  }
+	} catch (e) {
+		console.log(e);
+	}
 };
 
 export const userLogin = (formData) => async (dispatch) => {
-  try {
-    const userInfo = await axios.post(routes.LOGIN, formData);
-    dispatch(login({ payload: userInfo }));
-  } catch (e) {
-    console.log(e);
-  }
+	try {
+		const userInfo = await axios.post(routes.LOGIN, formData);
+		dispatch(login({ payload: userInfo }));
+	} catch (e) {
+		console.log(e);
+	}
 };

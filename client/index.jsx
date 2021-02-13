@@ -7,14 +7,14 @@ import thunk from 'redux-thunk';
 import App from './App';
 
 const store = createStore(
-  reducers,
-  applyMiddleware(thunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+	reducers,
+	applyMiddleware(thunk),
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('container'),
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById('container'),
 );
