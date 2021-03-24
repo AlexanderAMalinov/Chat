@@ -2,25 +2,30 @@ import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import * as actions from '../actions/index.js';
 
-const defaultUserInfo = {};
-const defaultConversationsState = [];
+const baseAppState = handleActions({
+    [actions.changeAppState]: (state, { payload }) => payload,
+}, 'startPage');
 
 const conversations = handleActions({
-    [actions.login]: (state, { payload: { conversationList } }) => {
+    [actions.authSuccess]: (state, { payload: { authData } }) => {
         return state;
     }
-}, defaultConversationsState);
+}, []);
 
 const currentUserInfo = handleActions({
-    [actions.login]: (state, { payload: { userInfo } }) => {
-        return { ...userInfo };
-    },
-    [actions.registration]: (state, { payload: { userInfo } }) => {
-        return { ...userInfo };
-    },
-}, defaultUserInfo);
+    [actions.authSuccess]: (state, { payload: { authData } }) => {
+        return { ...authData };
+    }
+}, {});
+
+const authStatus = handleActions({
+    [actions.authRequest]: () => ({ state: 'requested' }),
+    [actions.authFailure]: (state, { payload: { authData } }) => ({ state: 'failure', message: authData.errorMessage })
+}, {});
 
 export default combineReducers({
+    baseAppState,
     conversations,
-    currentUserInfo
+    currentUserInfo,
+    authStatus
 });

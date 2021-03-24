@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
-import { registration, userCreate } from '../../actions/index.js';
+import { userCreate } from '../../actions/index.js';
 import { ValidationService } from '../../services/ValidationService';
 
-const actionCreators = { userCreate, registration };
+const actionCreators = { userCreate };
 
 const UserRegistrationForm = (props) => {
   	return (

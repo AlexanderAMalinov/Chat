@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions/index.js';
 import LoginForm from './components/forms/LoginForm';
@@ -10,27 +10,30 @@ const actionCreators = {
 	login: actions.login
 };
 
-const mapStateToProps = (state) => ({ conversations: state.conversations });
-class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { isRegistration: false };
-	}
+const mapStateToProps = ({ baseAppState, conversations }) => ({ conversations, baseAppState });
 
-	changeForm = (event) => {
+const App = (props) => {
+	const { baseAppState } = props;
+	const [isRegistration, setFormState] = useState(false);
+	const changeForm = (event) => {
 		event.preventDefault();
-		this.setState({ isRegistration: !this.state.isRegistration });
-	}
+		setFormState(!isRegistration);
+	};
 
-	render() {
-		const { isRegistration } = this.state;
+	if (baseAppState === 'startPage') {
 		return (
-		<>
-			{isRegistration ? <UserRegistrationForm /> : <LoginForm />}
-			<TransitionLabel onChangeForm={this.changeForm} isRegistrationMode={isRegistration} />
-		</>
+			<>
+				{isRegistration ? <UserRegistrationForm /> : <LoginForm />}
+				<TransitionLabel onChangeForm={changeForm} isRegistrationMode={isRegistration} />
+			</>
 		);
+	} else {
+		// Place for chat layout
+		return (
+			<>
+			</>
+		)
 	}
-}
+};
 
 export default connect(mapStateToProps, actionCreators)(App);
