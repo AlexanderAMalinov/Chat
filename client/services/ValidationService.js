@@ -12,7 +12,7 @@ export class ValidationService {
 		let error;
 		const passwordMatchRegExp = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g;
 		if (!passwordMatchRegExp.test(value)) {
-			error = 'Пароль некорректен';
+			error = 'Invalid password';
 		}
 		return error;
 	}

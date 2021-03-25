@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions/index.js';
+import { baseAppStates } from './meta';
 import LoginForm from './components/forms/LoginForm';
 import { TransitionLabel } from './components/forms/TransitionLabel';
 import UserRegistrationForm from './components/forms/RegistrationForm';
@@ -20,7 +21,7 @@ const App = (props) => {
 		setFormState(!isRegistration);
 	};
 
-	if (baseAppState === 'startPage') {
+	if (baseAppState === baseAppStates.START_PAGE) {
 		return (
 			<>
 				{isRegistration ? <UserRegistrationForm /> : <LoginForm />}
@@ -32,7 +33,7 @@ const App = (props) => {
 		return (
 			<>
 			</>
-		)
+		);
 	}
 };
 

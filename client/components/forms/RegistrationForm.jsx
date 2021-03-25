@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import { userCreate } from '../../actions/index.js';
 import { ValidationService } from '../../services/ValidationService';
+import { authStatuses } from '../../meta';
 
 const actionCreators = { userCreate };
+const mapStateToProps = ({ authStatus }) => ({ authStatus });
 
 const UserRegistrationForm = (props) => {
+	const isButtonDisabled = props.authStatus.state === authStatuses.REQUESTED;
   	return (
 		<Formik
 		initialValues={{
@@ -32,11 +35,11 @@ const UserRegistrationForm = (props) => {
 				<label htmlFor="password-conf">Подтверждение пароля</label>
 				<Field type="password" className="form-control" name="passwordConfirmation" id="password-conf" placeholder="Введите пароль снова" />
 			</div>
-			<button type="submit" className="btn btn-primary user-form__submit-button">Зарегистрироваться</button>
+			<button disabled={isButtonDisabled} type="submit" className="btn btn-primary user-form__submit-button">Зарегистрироваться</button>
 			</Form>
 		)}
 		</Formik>
   	);
 };
 
-export default connect(null, actionCreators)(UserRegistrationForm);
+export default connect(mapStateToProps, actionCreators)(UserRegistrationForm);
