@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-import * as actions from '../actions/index';
-import { authStatuses, baseAppStates } from '../meta';
+import * as actions from '../actions/index.js';
+import { authStatuses, baseAppStates } from '../meta.js';
 
 const baseAppState = handleActions({
-  [actions.changeAppState]: (state, { payload }) => payload,
+  // [actions.changeAppState]: (state, { payload }) => payload,
 }, baseAppStates.START_PAGE);
 
 // const conversations = handleActions({

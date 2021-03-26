@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAction } from 'redux-actions';
-import { routes } from '../../common/routes';
+import { routes } from '../../common/routes.js';
 
 export const authRequest = createAction('AUTH_REQUEST');
 export const authSuccess = createAction('AUTH_SUCCESS');

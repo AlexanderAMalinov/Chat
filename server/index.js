@@ -1,7 +1,7 @@
 import Express from 'express';
 import bodyParser from 'body-parser';
-import { routes } from '../common/routes';
-import { AuthorizationService } from './services/AuthorizationService';
+import { routes } from '../common/routes.js';
+import { AuthorizationService } from './services/AuthorizationService.js';
 
 const port = 8081;
 const usersDbPath = './usersDB.txt';
