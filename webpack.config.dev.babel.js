@@ -18,6 +18,11 @@ export default {
     historyApiFallback: true,
     port: 8080,
     hot: true,
+    // proxy: {
+    //   '*': {
+    //       target: 'http://localhost:8081'
+    //   }
+    // },
   },
   resolve: {
     extensions: ['.js', '.ts', '.jsx'],
@@ -25,7 +30,7 @@ export default {
   module: {
     rules: [
       {
-        test: /\.(jsx?)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [{
           loader: 'babel-loader',

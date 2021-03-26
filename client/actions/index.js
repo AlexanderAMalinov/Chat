@@ -13,7 +13,7 @@ export const userCreate = (formData) => async (dispatch) => {
     authData = await axios.post(routes.CREATE_USER, formData);
     dispatch(authSuccess({ payload: authData }));
   } catch (e) {
-    console.log(e);
+    console.error(e);
     dispatch(authFailure({ payload: authData }));
   }
 };
@@ -25,7 +25,7 @@ export const userLogin = (formData) => async (dispatch) => {
     authData = await axios.post(routes.LOGIN, formData);
     dispatch(authSuccess({ payload: authData }));
   } catch (e) {
-    console.log(e);
+    console.error(e);
     dispatch(authFailure({ payload: authData }));
   }
 };

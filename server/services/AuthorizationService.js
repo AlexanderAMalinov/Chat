@@ -26,7 +26,7 @@ export class AuthorizationService {
     return expectedUser || null;
   }
 
-  async getRelatedConversations(id) {
-    // ???
-  }
+  // async getRelatedConversations() {
+  //   ???
+  // }
 }
