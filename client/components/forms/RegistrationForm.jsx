@@ -9,37 +9,37 @@ const actionCreators = { userCreate };
 const mapStateToProps = ({ authStatus }) => ({ authStatus });
 
 const UserRegistrationForm = (props) => {
-	const isButtonDisabled = props.authStatus.state === authStatuses.REQUESTED;
-  	return (
-		<Formik
-		initialValues={{
-			login: '',
-			password: '',
-			passwordConfirmation: ''
-		}}
-		onSubmit={(values) => props.userCreate(values)}
-		>
-		{({ errors, touched }) => (
-			<Form className="user-form">
-			<h3 className="user-form__form-header">Регистрация</h3>
-			<div className="form-group">
-				<label htmlFor="login">Логин</label>
-				<Field type="text" className="form-control" name="login" id="login" placeholder="Введите логин" />
-			</div>
-			<div className="form-group">
-				<label htmlFor="password">Пароль</label>
-				<Field validate={ValidationService.validatePassword} type="password" className="form-control" name="password" id="password" placeholder="Введите пароль" />
-				{errors.password && touched.password && <div className="user-form__incorrect-notification">{errors.password}</div>}
-			</div>
-			<div className="form-group">
-				<label htmlFor="password-conf">Подтверждение пароля</label>
-				<Field type="password" className="form-control" name="passwordConfirmation" id="password-conf" placeholder="Введите пароль снова" />
-			</div>
-			<button disabled={isButtonDisabled} type="submit" className="btn btn-primary user-form__submit-button">Зарегистрироваться</button>
-			</Form>
-		)}
-		</Formik>
-  	);
+  const isButtonDisabled = props.authStatus.state === authStatuses.REQUESTED;
+    return (
+    <Formik
+    initialValues={{
+      login: '',
+      password: '',
+      passwordConfirmation: ''
+    }}
+    onSubmit={(values) => props.userCreate(values)}
+    >
+    {({ errors, touched }) => (
+      <Form className="user-form">
+      <h3 className="user-form__form-header">Регистрация</h3>
+      <div className="form-group">
+        <label htmlFor="login">Логин</label>
+        <Field type="text" className="form-control" name="login" id="login" placeholder="Введите логин" />
+      </div>
+      <div className="form-group">
+        <label htmlFor="password">Пароль</label>
+        <Field validate={ValidationService.validatePassword} type="password" className="form-control" name="password" id="password" placeholder="Введите пароль" />
+        {errors.password && touched.password && <div className="user-form__incorrect-notification">{errors.password}</div>}
+      </div>
+      <div className="form-group">
+        <label htmlFor="password-conf">Подтверждение пароля</label>
+        <Field type="password" className="form-control" name="passwordConfirmation" id="password-conf" placeholder="Введите пароль снова" />
+      </div>
+      <button disabled={isButtonDisabled} type="submit" className="btn btn-primary user-form__submit-button">Зарегистрироваться</button>
+      </Form>
+    )}
+    </Formik>
+    );
 };
 
 export default connect(mapStateToProps, actionCreators)(UserRegistrationForm);
