@@ -8,7 +8,7 @@ export class AuthorizationService {
 
   async createNewUser(formData) {
     const { login, password } = formData;
-    const id = crypto.randomBytes(16).toString("hex");
+    const id = crypto.randomBytes(16).toString('hex');
     const preparedData = `${id}|${login}|${password}\n`;
     await fs.appendFile(this.dbPath, preparedData, 'utf8');
   }
@@ -17,12 +17,12 @@ export class AuthorizationService {
     const { login } = formData;
     const data = await fs.readFile(this.dbPath);
     const usersArray = data.toString().trim().split('\n');
-    const usersParsed = usersArray.map(user => {
+    const usersParsed = usersArray.map((user) => {
       const userData = user.split('|');
       return { login: userData[1], password: userData[2] };
     });
 
-    const expectedUser = usersParsed.find(user => user.login === login);
+    const expectedUser = usersParsed.find((user) => user.login === login);
     return expectedUser || null;
   }
 

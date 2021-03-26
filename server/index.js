@@ -12,7 +12,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(Express.static('dist'));
 
-
 app.get(routes.ROOT, (req, res) => {
   res.sendFile('index.html', { root: 'dist' });
 });
@@ -36,16 +35,16 @@ app.post(routes.LOGIN, async (req, res) => {
   const formData = req.body;
   const relatedUserData = await authService.findUserData(formData);
   if (relatedUserData) {
-    responseData = relatedUserData.password === formData.password ?
-      { success: true, conversations: authService.getRelatedConversations() } :
-      { success: false, errorMessage: 'Password is incorrect' };
+    responseData = relatedUserData.password === formData.password
+      ? { success: true, conversations: authService.getRelatedConversations() }
+      : { success: false, errorMessage: 'Password is incorrect' };
   } else {
     responseData = { success: false, errorMessage: 'User with same name does not exist' };
   }
-    res.status(responseData.success ? 200 : 401);
-    res.json(responseData);
+  res.status(responseData.success ? 200 : 401);
+  res.json(responseData);
 });
 
 app.listen(port, () => {
-    console.log(`Listening on ${port}`);
+  console.log(`Listening on ${port}`);
 });

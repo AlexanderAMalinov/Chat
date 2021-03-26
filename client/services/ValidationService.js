@@ -6,7 +6,7 @@ export class ValidationService {
       error = 'Invalid email address';
     }
     return error;
-    }
+  }
 
   static validatePassword(value) {
     let error;

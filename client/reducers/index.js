@@ -8,24 +8,22 @@ const baseAppState = handleActions({
 }, baseAppStates.START_PAGE);
 
 const conversations = handleActions({
-  [actions.authSuccess]: (state, { payload }) => {
-      return state;
-  }
+  [actions.authSuccess]: (state, { payload }) => state,
 }, []);
 
 const currentUserInfo = handleActions({
-  [actions.authSuccess]: (state, { payload }) => ({ ...payload })
+  [actions.authSuccess]: (state, { payload }) => ({ ...payload }),
 }, {});
 
 const authStatus = handleActions({
   [actions.authRequest]: () => ({ state: authStatuses.REQUESTED }),
   [actions.authFailure]: (state, { payload }) => ({ state: authStatuses.FAILURE, message: payload.errorMessage }),
-  [actions.authSuccess]: () => ({ state: authStatuses.SUCCESS })
+  [actions.authSuccess]: () => ({ state: authStatuses.SUCCESS }),
 }, {});
 
 export default combineReducers({
   baseAppState,
   conversations,
   currentUserInfo,
-  authStatus
+  authStatus,
 });
