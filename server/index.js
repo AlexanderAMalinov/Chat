@@ -1,10 +1,15 @@
+import http from 'http';
 import Express from 'express';
+import WebSocket from 'ws';
 import bodyParser from 'body-parser';
 import { config } from './config.js';
 import { routes } from '../common/routes.js';
 import { AuthorizationService } from './services/AuthorizationService.js';
 
 const app = new Express();
+const server = http.createServer(app);
+const webSocketServer = new WebSocket.Server({ server });
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(Express.static('dist'));
