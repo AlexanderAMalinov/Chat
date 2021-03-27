@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest",
-    "start": "webpack-dev-server --mode development --config webpack.config.dev.babel.js --open",
-    "build": "webpack --config webpack.config.prod.babel.js"
+    "start": "webpack serve --mode development --config webpack.config.dev.babel.js --open",
+    "deploy": "npm i && webpack --config webpack.config.prod.babel.js && node ./server/index.js",
+    "build": "webpack --config webpack.config.prod.babel.js",
+    "server": "node ./server/index.js",
+    "lint": "npx eslint .",
+    "lintfix": "npx eslint . --fix"
   },
   "author": "Alexander Malinov",
   "license": "ISC",
@@ -48,8 +53,8 @@
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {

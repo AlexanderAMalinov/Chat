@@ -15,7 +15,13 @@ export class AuthorizationService {
 
   async findUserData(formData) {
     const { login } = formData;
-    const data = await fs.readFile(this.dbPath);
+    let data;
+    try {
+      data = await fs.readFile(this.dbPath);
+    } catch(e) {
+      console.log(e);
+      return null;
+    }
     const usersArray = data.toString().trim().split('\n');
     const usersParsed = usersArray.map((user) => {
       const userData = user.split('|');
@@ -26,7 +32,7 @@ export class AuthorizationService {
     return expectedUser || null;
   }
 
-  async getRelatedConversations(id) {
-    // ???
-  }
+  // async getRelatedConversations() {
+  //   ???
+  // }
 }

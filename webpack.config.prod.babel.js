@@ -1,12 +1,16 @@
 import '@babel/polyfill';
-import path from 'path';
+import { fileURLToPath } from 'url';
+import { join, dirname } from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import ImageMinPlugin from 'imagemin-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default {
   devtool: false,
   entry: {
     main: [
@@ -16,7 +20,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: join(__dirname, 'dist'),
     filename: '[name].js',
   },
   resolve: {
@@ -61,7 +65,7 @@ module.exports = {
   optimization: {
     minimizer: [
       new UglifyJSPlugin({ sourceMap: true }),
-      new ImageMinPlugin({
+      new ImageMinPlugin.default({
         test: /\.(png|jpe?g|gif|svg)$/,
       }),
       new OptimizeCssAssetsPlugin({

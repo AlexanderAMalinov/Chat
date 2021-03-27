@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import { routes } from '../common/routes.js';
 import { AuthorizationService } from './services/AuthorizationService.js';
 
-const port = 80;
+const port = 8081;
 const usersDbPath = './usersDB.txt';
 const authService = new AuthorizationService(usersDbPath);
 
