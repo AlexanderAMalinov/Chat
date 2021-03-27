@@ -65,9 +65,9 @@ export default {
   optimization: {
     minimizer: [
       new UglifyJSPlugin({ sourceMap: true }),
-      // new ImageMinPlugin({
-      //   test: /\.(png|jpe?g|gif|svg)$/,
-      // }),
+      new ImageMinPlugin.default({
+        test: /\.(png|jpe?g|gif|svg)$/,
+      }),
       new OptimizeCssAssetsPlugin({
         cssProcessorOptions: { sourceMap: true },
       }),

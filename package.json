@@ -7,7 +7,10 @@
   "scripts": {
     "test": "jest",
     "start": "webpack serve --mode development --config webpack.config.dev.babel.js --open",
-    "build": "webpack --config webpack.config.prod.babel.js"
+    "deploy": "webpack --config webpack.config.prod.babel.js && node ./server/index.js",
+    "build": "webpack --config webpack.config.prod.babel.js",
+    "lint": "npx eslint .",
+    "lintfix": "npx eslint . --fix"
   },
   "author": "Alexander Malinov",
   "license": "ISC",
