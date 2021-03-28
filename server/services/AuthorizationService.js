@@ -6,6 +6,7 @@ export class AuthorizationService {
   constructor(dbPath, logsPath) {
     this.dbPath = dbPath;
     this.logsPath = logsPath;
+    // Keep data of all users in RAM??
     this.__readUsersDatabase()
       .then(() => this.__parseUsersData())
       .then(() => this.serviceReady = true);

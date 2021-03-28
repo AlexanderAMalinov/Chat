@@ -1,6 +1,5 @@
 node_modules
 dist
 chatWorkspace.code-workspace
-usersDB.txt
+database
 logs.txt
-conversationsDB.txt
