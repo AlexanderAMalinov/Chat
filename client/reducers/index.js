@@ -4,7 +4,7 @@ import * as actions from '../actions/index.js';
 import { authStatuses, baseAppStates } from '../meta.js';
 
 const baseAppState = handleActions({
-  // [actions.changeAppState]: (state, { payload }) => payload,
+  [actions.authSuccess]: () => baseAppStates.MAIN_PAGE,
 }, baseAppStates.START_PAGE);
 
 // const conversations = handleActions({

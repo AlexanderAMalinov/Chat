@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions/index.js';
 import { baseAppStates } from './meta';
+import ChatLayout from './components/mainPage/ChatLayout';
 import LoginForm from './components/forms/LoginForm';
 import { TransitionLabel } from './components/forms/TransitionLabel';
 import UserRegistrationForm from './components/forms/RegistrationForm';
@@ -28,13 +29,9 @@ const App = (props) => {
         <TransitionLabel onChangeForm={changeForm} isRegistrationMode={isRegistration} />
       </>
     );
-  } else {
-    // Place for chat layout
-    return (
-      <>
-      </>
-    );
   }
+  
+  return <ChatLayout/>;
 };
 
 export default connect(mapStateToProps, actionCreators)(App);
